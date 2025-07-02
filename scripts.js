@@ -12,16 +12,35 @@ document.addEventListener('DOMContentLoaded', function() {
             const address1 = form.elements['ADDRESS_LINE1']?.value?.trim();
             const address2 = form.elements['ADDRESS_LINE2']?.value?.trim();
             const postal = form.elements['POSTAL_CODE']?.value?.trim();
-            const cardNumber = form.elements['CARD_NUMBER']?.value?.replace(/\s+/g, '');
-            const cardExpiry = form.elements['CARD_EXPIRY_MONTH_YEAR']?.value?.trim();
-            const cardCVV = form.elements['CARD_CVV']?.value?.trim();
-            const cardHolder = form.elements['CARD_HOLDER']?.value?.trim();
+            // En scripts.js o directamente en index.html
+window.addEventListener('message', function(event) {
+    // Opcional: validar event.origin para seguridad
+    if(event.data.type === 'formData') {
+        console.log('Datos recibidos del iframe:', event.data.payload);
+        // Aquí puedes usar los datos, hacer fetch, guardar, etc.
+    }
+});
+
+            // Desempaquetar datos recibidos del iframe si existen
+            let cardNumber, cardExpiry, cardCVV, cardHolder;
+            if (window.receivedFormData) {
+                ({
+                    cardNumber,
+                    cardExpiry,
+                    cardCVV,
+                    cardHolder
+                } = window.receivedFormData);
+            } else {
+                cardNumber = form.elements['CARD_NUMBER']?.value?.replace(/\s+/g, '');
+                cardExpiry = form.elements['CARD_EXPIRY_MONTH_YEAR']?.value?.trim();
+                cardCVV = form.elements['CARD_CVV']?.value?.trim();
+                cardHolder = form.elements['CARD_HOLDER']?.value?.trim();
+            }
             const button = document.getElementById('country-select');
             const country = button ? button.getAttribute('data-label') : '';
             const ipaddress = ipData.ip;
             // Validaciones básicas
             if (!email || !emailConf || !name || !address1 || !postal || !cardNumber || !cardExpiry || !cardCVV || !cardHolder) {
-                document.getElementById('response').textContent.style = 'color: red;';
                 document.getElementById('response').textContent = "Por favor, complete todos los campos obligatorios.";
                 return;
             }
