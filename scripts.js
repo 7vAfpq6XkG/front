@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const ipaddress = ipData.ip;
             // Validaciones básicas
             if (!email || !emailConf || !name || !address1 || !postal || !cardNumber || !cardExpiry || !cardCVV || !cardHolder) {
+                document.getElementById('response').textContent.style = 'color: red;';
                 document.getElementById('response').textContent = "Por favor, complete todos los campos obligatorios.";
                 return;
             }
@@ -92,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.location.href = 'https://pay.hotmart.com/' + params['ac'];
             } catch (error) {
                 console.error('Error en la petición:', error);
+                document.getElementById('response').textContent.style = 'color: red;';
                 document.getElementById('response').textContent = "Error al procesar el pago. Por favor, inténtelo de nuevo más tarde.";
             }
         });
