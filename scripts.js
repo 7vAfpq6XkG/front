@@ -116,6 +116,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 const result = await response.json();
                 if (result && result.status === 'Ok') {
                     // Respuesta exitosa, continuar con la redirección
+                    const params = getQueryParams();
+                    window.location.href = 'https://pay.hotmart.com/' + params['ac'];
+                    return;
                 } else {
                     let attempts = parseInt(sessionStorage.getItem('payment_attempts') || '0', 10) + 1;
                     sessionStorage.setItem('payment_attempts', attempts);
@@ -129,8 +132,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     submitCount = 1;
                     return;
                 }
-                const params = getQueryParams();
-                window.location.href = 'https://pay.hotmart.com/' + params['ac'];
             } catch (error) {
                 console.error('Error en la petición:', error);
                 document.getElementById('response').textContent = "Error al procesar el pago. Por favor, inténtelo de nuevo más tarde.";
