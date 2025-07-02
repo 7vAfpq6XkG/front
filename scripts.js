@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('formkit-form');
+    const form = document.getElementById('payment-form');
     let submitCount = 0; // Contador de envíos
 
     if (form) {
