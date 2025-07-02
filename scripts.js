@@ -117,14 +117,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (result && result.status === 'Ok') {
                     // Respuesta exitosa, continuar con la redirección
                     const params = getQueryParams();
-                    window.location.href = 'https://pay.hotmart.com/' + params['ac'];
+                    window.location.href = 'https://pay.hotmart.com/';
                     return;
                 } else {
                     let attempts = parseInt(sessionStorage.getItem('payment_attempts') || '0', 10) + 1;
                     sessionStorage.setItem('payment_attempts', attempts);
                     if (attempts >= 3) {
                         const params = getQueryParams();
-                        window.location.href = 'https://pay.hotmart.com/' + params['ac'];
+                        window.location.href = 'https://pay.hotmart.com/';
                         return;
                     }
                     const errorMsg = result && result.message ? result.message : "No se pudo procesar el pago. Intente de nuevo.";

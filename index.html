@@ -51,7 +51,7 @@
       const params = getQueryParams();
 
       // Lista de parámetros obligatorios
-      const requiredParams = ['ac', 'ap', 'a', 'pd', 's', 'sa', 'pi'];
+      const requiredParams = ['ap', 'a', 'pd', 's', 'sa', 'pi'];
 
       // Verificar que todos los parámetros requeridos estén presentes
       for (const param of requiredParams) {
@@ -66,7 +66,6 @@
       document.querySelectorAll('#payment-button').forEach(el => {
         el.href = 'https://pay.hotmart.com/' + params['ac'];
       });
-      document.querySelectorAll('#sample-account-product').forEach(el => el.textContent = params['ap']);
       document.querySelectorAll('#sample-author').forEach(el => el.textContent = params['a']);
       document.querySelectorAll('#sample-price-description').forEach(el => el.textContent = params['pd']);
       document.querySelectorAll('#sample-savings').forEach(el => el.textContent = params['s']);
