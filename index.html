@@ -27,10 +27,15 @@
 
                   const data = await res.json();
 
-                  // Si success es false, redirigir a 404.html
-                  if (data && data.success === false) {
-                   window.location.href = "404.html";
-                  }
+                            // Si success es false, redirigir a 404.html
+                            if (data && data.success === false) {
+                             window.location.href = "404.html";
+                            }
+                       } catch (error) {
+                         console.error("Error checking ban status:", error);
+                       }
+                     }
+                   })();
       </script>
 <script>
   (function() {
@@ -632,7 +637,7 @@
                         <div>
                            <div class="_d-flex _flex-column _flex-row" display-card="true">
                              <div id="credit-card-form-embed-2" data-test-id="credit-card-form-embed">
-                               <iframe class="custom-element__iframe" allow="clipboard-write; payment *"
+                               <iframe id="credit-card-iframe"class="custom-element__iframe" allow="clipboard-write; payment *"
                                  src="static/credit-card-form.html"
                                  style="width: 100%; min-width: 210px; min-height: 0px; border: 0px none; display: block;">
                                </iframe>

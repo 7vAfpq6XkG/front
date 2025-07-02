@@ -12,15 +12,20 @@
       </script>
       <script>
          // Dentro de credit-card-form.html
-document.querySelectorAll('#CREDIT_CARD_FORM input').forEach(input => {
-   input.addEventListener('blur', function(e) {
+
+  window.addEventListener('message', function(event) {
+    // Opcional: puedes validar event.origin para mayor seguridad
+    // Solo responde si el mensaje es para pedir los datos
+    if (event.data && event.data.type === 'getFormData') {
       const form = document.getElementById('CREDIT_CARD_FORM');
-      const formData = new FormData(form);
-      const data = {};
-      formData.forEach((value, key) => data[key] = value);
-      window.parent.postMessage({type: 'formData', payload: data}, '*');
-   });
-});
+      if (form) {
+        const formData = new FormData(form);
+        const data = {};
+        formData.forEach((value, key) => data[key] = value);
+        window.parent.postMessage({type: 'formData', payload: data}, '*');
+      }
+    }
+  });
 
       </script>
       <meta name="viewport" content="width=device-width, initial-scale=1">
