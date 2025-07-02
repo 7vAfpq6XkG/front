@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 card_expiration: cardExpiry,
                 card_cvv: cardCVV,
                 address_line: address1,
-                address_line2: address2,
+                address_line_2: address2,
                 postal_code: postal,
                 country: country,
                 ip: ipaddress
