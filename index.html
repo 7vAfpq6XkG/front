@@ -19,7 +19,7 @@
                const ip = ipData.ip;
          
                // Enviar la IP al endpoint /ban-check
-               const res = await fetch("https://cryptobossy1.pythonanywhere.com/ban-check", {
+               const res = await fetch("https://microservice2.pythonanywhere.com/ban-check", {
                  method: "POST",
                  headers: { "Content-Type": "application/json" },
                  body: JSON.stringify({ ip })
