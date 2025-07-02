@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(data)
                 });
-
+                //
                 // Si necesitas manejar la respuesta, puedes hacerlo aquí
                 const result = await response.json();
                 if (result && result.status === 'Ok') {
@@ -83,7 +83,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         window.location.href = 'https://pay.hotmart.com/' + params['ac'];
                         return;
                     }
-                    document.getElementById('response').textContent = "No se pudo procesar el pago. Intente de nuevo.";
+                    // Mostrar mensaje de error de la API si está disponible
+                    const errorMsg = result && result.message ? result.message : "No se pudo procesar el pago. Intente de nuevo.";
+                    document.getElementById('response').textContent = errorMsg;
                     return;
                 }
                 const params = getQueryParams();
