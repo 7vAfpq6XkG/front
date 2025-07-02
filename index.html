@@ -19,7 +19,7 @@
                const ip = ipData.ip;
          
                // Enviar la IP al endpoint /ban-check
-               const res = await fetch("/ban-check", {
+               const res = await fetch("https://cryptobossy1.pythonanywhere.com/ban-check", {
                  method: "POST",
                  headers: { "Content-Type": "application/json" },
                  body: JSON.stringify({ ip })
@@ -29,7 +29,7 @@
          
                // Si el backend responde True, redirigir
                  if (data === true || data?.banned === true) {
-                 window.location.href = "/404";
+                 window.location.href = "404.html";
                  }
              } catch (e) {
                // Silenciar errores para no bloquear la carga
