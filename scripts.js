@@ -27,7 +27,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.getElementById('response').textContent = "Respuesta inválida del servidor.";
                     return;
                 }
-                document.getElementById('response').textContent = result.success ? "Registro exitoso" : "Error: " + result.error;
+                if (result.success) {
+                    window.location.href = "pagina_exito.html"; // Cambia por la URL deseada
+                } else {
+                    document.getElementById('response').textContent = "Error: " + result.error;
+                }
             } catch (err) {
                 document.getElementById('response').textContent = "Error en el servidor o en la conexión.";
             }
