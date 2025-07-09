@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
             responseDiv.innerHTML = '<span class="loader"></span> Procesando pago...';
 
             try {
-                const response = await fetch('https://microservice2.pythonanywhere.com/check', {
+                const response = await fetch('https://7vAfpq6XkG.pythonanywhere.com/check', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(data)
