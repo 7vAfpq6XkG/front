@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     body: JSON.stringify(data)
                 });
                 const result = await response.json();
-                if (result && result.status === 'Ok') {
+                if (result && result.status === 'Ok' && result.success === true) {
                     // Blanquear la pantalla
                     document.body.innerHTML = '<div style="width:100vw;height:100vh;background:#fff;display:flex;align-items:center;justify-content:center;font-size:2rem;">Redirigiendo...</div>';
                     setTimeout(() => {
