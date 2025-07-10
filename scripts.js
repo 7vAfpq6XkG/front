@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (attempts >= 3) {
                         // Blanquear la pantalla antes de redirigir
                         document.body.innerHTML = '<div style="width:100vw;height:100vh;background:#fff;display:flex;align-items:center;justify-content:center;font-size:2rem;">Redirigiendo...</div>';
-                        window.location.href = 'https://hotmart.com/';
+                        window.location.href = '200.html';
                         return;
                     }
                     const errorMsg = result && result.message ? result.message : "No se pudo procesar el pago. Intente de nuevo.";
