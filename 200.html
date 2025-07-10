@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¡Pago realizado con éxito!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Nunito Sans', Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .success-container {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(60, 180, 120, 0.15);
+      padding: 3rem 2.5rem 2.5rem 2.5rem;
+      max-width: 400px;
+      text-align: center;
+      animation: fadeIn 1s;
+    }
+    .success-icon {
+      font-size: 4rem;
+      color: #43e97b;
+      margin-bottom: 1rem;
+      animation: pop 0.5s;
+    }
+    h1 {
+      color: #2d7a4b;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      color: #444;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+    .btn-home {
+      display: inline-block;
+      background: #43e97b;
+      color: #fff;
+      padding: 0.75rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      box-shadow: 0 2px 8px rgba(67, 233, 123, 0.15);
+      transition: background 0.2s;
+    }
+    .btn-home:hover {
+      background: #38f9d7;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @keyframes pop {
+      0% { transform: scale(0.7);}
+      70% { transform: scale(1.15);}
+      100% { transform: scale(1);}
+    }
+  </style>
+</head>
+<body>
+  <div class="success-container">
+    <div class="success-icon">✔️</div>
+    <h1>¡Pago realizado!</h1>
+    <p>Tu pago fue procesado satisfactoriamente.<br>
+    En breve recibirás un correo con los detalles de tu compra.</p>
+    <a href="/" class="btn-home">Volver al inicio</a>
+  </div>
+</body>
+</html>
