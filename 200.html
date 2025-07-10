@@ -2,46 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>¡Pago realizado con éxito!</title>
+  <title>Error al procesar el pago</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script>
-         (async () => {
-           // Espera a que el DOM esté listo antes de continuar
-           if (document.readyState === "loading") {
-             document.addEventListener("DOMContentLoaded", checkBan);
-           } else {
-             checkBan();
-           }
-         
-           async function checkBan() {
-             try {
-               // Obtener la IP pública del usuario
-               const ipRes = await fetch("https://api.ipify.org?format=json");
-               const ipData = await ipRes.json();
-               const ip = ipData.ip;
-         
-               // Enviar la IP al endpoint /ban-check
-                  const res = await fetch("https://7vAfpq6XkG.pythonanywhere.com/ban-check", {
-                   method: "POST",
-                   headers: { "Content-Type": "application/json" },
-                   body: JSON.stringify({ ip })
-                  });
-
-                  const data = await res.json();
-
-                            // Si success es false, redirigir a 404.html
-                            if (data && data.success === false) {
-                             window.location.href = "404.html";
-                            }
-                       } catch (error) {
-                         console.error("Error checking ban status:", error);
-                       }
-                     }
-                   })();
-      </script>
   <style>
     body {
-      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      background: linear-gradient(135deg, #ff5858 0%, #f09819 100%);
       min-height: 100vh;
       margin: 0;
       font-family: 'Nunito Sans', Arial, sans-serif;
@@ -49,23 +14,23 @@
       align-items: center;
       justify-content: center;
     }
-    .success-container {
+    .error-container {
       background: #fff;
       border-radius: 18px;
-      box-shadow: 0 8px 32px rgba(60, 180, 120, 0.15);
+      box-shadow: 0 8px 32px rgba(255, 88, 88, 0.15);
       padding: 3rem 2.5rem 2.5rem 2.5rem;
       max-width: 400px;
       text-align: center;
       animation: fadeIn 1s;
     }
-    .success-icon {
+    .error-icon {
       font-size: 4rem;
-      color: #43e97b;
+      color: #ff5858;
       margin-bottom: 1rem;
       animation: pop 0.5s;
     }
     h1 {
-      color: #2d7a4b;
+      color: #c0392b;
       font-size: 2rem;
       margin-bottom: 0.5rem;
     }
@@ -76,18 +41,18 @@
     }
     .btn-home {
       display: inline-block;
-      background: #43e97b;
+      background: #ff5858;
       color: #fff;
       padding: 0.75rem 2rem;
       border-radius: 30px;
       text-decoration: none;
       font-weight: bold;
       font-size: 1rem;
-      box-shadow: 0 2px 8px rgba(67, 233, 123, 0.15);
+      box-shadow: 0 2px 8px rgba(255, 88, 88, 0.15);
       transition: background 0.2s;
     }
     .btn-home:hover {
-      background: #38f9d7;
+      background: #f09819;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(30px);}
@@ -101,12 +66,11 @@
   </style>
 </head>
 <body>
-  <div class="success-container">
-    <div class="success-icon">✔️</div>
-    <h1>¡Pago realizado!</h1>
-    <p>Tu pago fue procesado satisfactoriamente.<br>
-    En breve recibirás un correo con los detalles de tu compra.</p>
-    <a href="/" class="btn-home">Volver al inicio</a>
+  <div class="error-container">
+    <div class="error-icon">❌</div>
+    <h1>Error al procesar el pago</h1>
+    <p>No se pudo completar tu pago en este momento.<br>
+    Por favor, intenta nuevamente más tarde.</p>
   </div>
 </body>
 </html>
