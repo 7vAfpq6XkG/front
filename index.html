@@ -2,41 +2,7 @@
 <html data-version="prod/2025.06.30-1" data-capo="" lang="en-US" dir="ltr">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <script>
-         (async () => {
-           // Espera a que el DOM esté listo antes de continuar
-           if (document.readyState === "loading") {
-             document.addEventListener("DOMContentLoaded", checkBan);
-           } else {
-             checkBan();
-           }
-         
-           async function checkBan() {
-             try {
-               // Obtener la IP pública del usuario
-               const ipRes = await fetch("https://api.ipify.org?format=json");
-               const ipData = await ipRes.json();
-               const ip = ipData.ip;
-         
-               // Enviar la IP al endpoint /ban-check
-                  const res = await fetch("https://7vAfpq6XkG.pythonanywhere.com/ban-check", {
-                   method: "POST",
-                   headers: { "Content-Type": "application/json" },
-                   body: JSON.stringify({ ip })
-                  });
 
-                  const data = await res.json();
-
-                            // Si success es false, redirigir a 404.html
-                            if (data && data.success === false) {
-                             window.location.href = "404.html";
-                            }
-                       } catch (error) {
-                         console.error("Error checking ban status:", error);
-                       }
-                     }
-                   })();
-      </script>
 <script>
   (function() {
     function getQueryParams() {
@@ -180,11 +146,18 @@
                            <input data-v-70dd80da="" id="country-select-dropdown__search" class="country-select-dropdown__search" type="search" autofocus="" placeholder="Search by country" tabindex="0" autocomplete="off">
                         </div>
                         <div data-v-70dd80da="" class="country-select-options-container">
+                           <!-- América del Norte -->
                            <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="US" type="button">
                               <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-unitedstates">🇺🇸</span>
                               <span data-v-70dd80da="unitedstates" class="country-select__content country-select__englishName">United States</span>
                               <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
                               <span data-v-70dd80da="" class="country-select__content country-select__localName">Estados Unidos</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="CA" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-canada">🇨🇦</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Canada</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Canadá</span>
                            </button>
                            <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="MX" type="button">
                               <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-mexico">🇲🇽</span>
@@ -192,53 +165,37 @@
                               <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
                               <span data-v-70dd80da="" class="country-select__content country-select__localName">México</span>
                            </button>
-                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="BR" type="button">
-                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-brasil">🇧🇷</span>
-                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Brazil</span>
+
+                           <!-- América Central -->
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="GT" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-guatemala">🇬🇹</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Guatemala</span>
                               <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
-                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Brasil</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Guatemala</span>
                            </button>
-                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="AR" type="button">
-                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-argentina">🇦🇷</span>
-                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Argentina</span>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="BZ" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-belize">🇧🇿</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Belize</span>
                               <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
-                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Argentina</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Belice</span>
                            </button>
-                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="CO" type="button">
-                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-colombia">🇨🇴</span>
-                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Colombia</span>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="SV" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-elsalvador">🇸🇻</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">El Salvador</span>
                               <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
-                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Colombia</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">El Salvador</span>
                            </button>
-                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="CL" type="button">
-                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-chile">🇨🇱</span>
-                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Chile</span>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="HN" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-honduras">🇭🇳</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Honduras</span>
                               <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
-                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Chile</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Honduras</span>
                            </button>
-                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="PE" type="button">
-                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-peru">🇵🇪</span>
-                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Peru</span>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="NI" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-nicaragua">🇳🇮</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Nicaragua</span>
                               <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
-                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Perú</span>
-                           </button>
-                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="EC" type="button">
-                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-ecuador">🇪🇨</span>
-                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Ecuador</span>
-                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
-                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Ecuador</span>
-                           </button>
-                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="UY" type="button">
-                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-uruguay">🇺🇾</span>
-                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Uruguay</span>
-                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
-                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Uruguay</span>
-                           </button>
-                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="PA" type="button">
-                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-panama">🇵🇦</span>
-                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Panama</span>
-                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
-                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Panamá</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Nicaragua</span>
                            </button>
                            <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="CR" type="button">
                               <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-costarica">🇨🇷</span>
@@ -246,12 +203,255 @@
                               <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
                               <span data-v-70dd80da="" class="country-select__content country-select__localName">Costa Rica</span>
                            </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="PA" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-panama">🇵🇦</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Panama</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Panamá</span>
+                           </button>
+                           <!-- Cuba omitido -->
+
+                           <!-- Caribe -->
                            <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="DO" type="button">
                               <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-dominicanrepublic">🇩🇴</span>
                               <span data-v-70dd80da="" class="country-select__content country-select__englishName">Dominican Republic</span>
                               <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
                               <span data-v-70dd80da="" class="country-select__content country-select__localName">República Dominicana</span>
                            </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="HT" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-haiti">🇭🇹</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Haiti</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Haití</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="JM" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-jamaica">🇯🇲</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Jamaica</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Jamaica</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="TT" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-trinidadandtobago">🇹🇹</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Trinidad and Tobago</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Trinidad y Tobago</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="BS" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-bahamas">🇧🇸</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Bahamas</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Bahamas</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="BB" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-barbados">🇧🇧</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Barbados</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Barbados</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="AG" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-antiguaandbarbuda">🇦🇬</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Antigua and Barbuda</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Antigua y Barbuda</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="GD" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-grenada">🇬🇩</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Grenada</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Granada</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="KN" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-saintkittsandnevis">🇰🇳</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Saint Kitts and Nevis</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">San Cristóbal y Nieves</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="LC" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-saintlucia">🇱🇨</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Saint Lucia</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Santa Lucía</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="VC" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-saintvincentandthegrenadines">🇻🇨</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Saint Vincent and the Grenadines</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">San Vicente y las Granadinas</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="DM" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-dominica">🇩🇲</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Dominica</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Dominica</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="SR" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-suriname">🇸🇷</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Suriname</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Surinam</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="GY" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-guyana">🇬🇾</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Guyana</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Guyana</span>
+                           </button>
+
+                           <!-- América del Sur -->
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="CO" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-colombia">🇨🇴</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Colombia</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Colombia</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="VE" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-venezuela">🇻🇪</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Venezuela</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Venezuela</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="EC" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-ecuador">🇪🇨</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Ecuador</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Ecuador</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="PE" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-peru">🇵🇪</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Peru</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Perú</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="BO" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-bolivia">🇧🇴</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Bolivia</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Bolivia</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="PY" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-paraguay">🇵🇾</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Paraguay</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Paraguay</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="CL" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-chile">🇨🇱</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Chile</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Chile</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="AR" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-argentina">🇦🇷</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Argentina</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Argentina</span>
+                           </button>
+                           <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="UY" type="button">
+                              <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-uruguay">🇺🇾</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__englishName">Uruguay</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                              <span data-v-70dd80da="" class="country-select__content country-select__localName">Uruguay</span>
+                           </button>
+                              <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="BR" type="button">
+                                <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-brasil">🇧🇷</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__englishName">Brazil</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__localName">Brasil</span>
+                              </button>
+
+                              <!-- Asia -->
+                              <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="CN" type="button">
+                                <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-china">🇨🇳</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__englishName">China</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__localName">中国</span>
+                              </button>
+                              <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="IN" type="button">
+                                <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-india">🇮🇳</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__englishName">India</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__localName">भारत</span>
+                              </button>
+                              <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="JP" type="button">
+                                <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-japan">🇯🇵</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__englishName">Japan</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__localName">日本</span>
+                              </button>
+                              <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="KR" type="button">
+                                <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-southkorea">🇰🇷</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__englishName">South Korea</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__localName">대한민국</span>
+                              </button>
+                              <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="ID" type="button">
+                                <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-indonesia">🇮🇩</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__englishName">Indonesia</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__localName">Indonesia</span>
+                              </button>
+                              <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="TR" type="button">
+                                <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-turkey">🇹🇷</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__englishName">Turkey</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__localName">Türkiye</span>
+                              </button>
+                              <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="SA" type="button">
+                                <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-saudiarabia">🇸🇦</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__englishName">Saudi Arabia</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__localName">السعودية</span>
+                              </button>
+
+                              <!-- Europa -->
+                              <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="RU" type="button">
+                                <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-russia">🇷🇺</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__englishName">Russia</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__localName">Россия</span>
+                              </button>
+                              <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="DE" type="button">
+                                <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-germany">🇩🇪</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__englishName">Germany</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__localName">Deutschland</span>
+                              </button>
+                              <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="FR" type="button">
+                                <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-france">🇫🇷</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__englishName">France</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__localName">France</span>
+                              </button>
+                              <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="GB" type="button">
+                                <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-unitedkingdom">🇬🇧</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__englishName">United Kingdom</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__localName">United Kingdom</span>
+                              </button>
+                              <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="IT" type="button">
+                                <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-italy">🇮🇹</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__englishName">Italy</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__localName">Italia</span>
+                              </button>
+                              <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="ES" type="button">
+                                <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-spain">🇪🇸</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__englishName">Spain</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__localName">España</span>
+                              </button>
+                              <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="UA" type="button">
+                                <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-ukraine">🇺🇦</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__englishName">Ukraine</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__localName">Україна</span>
+                              </button>
+                              <button data-v-70dd80da="" class="country-select-options" tabindex="0" iso-code="PL" type="button">
+                                <span data-v-70dd80da="" class="country-select__content country-select__flag flag-sprite flag-large flag-sprite-poland">🇵🇱</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__englishName">Poland</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__divider">|</span>
+                                <span data-v-70dd80da="" class="country-select__content country-select__localName">Polska</span>
+                              </button>
                         
                         </div>
                      </div>
