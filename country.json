@@ -1,4 +1,65 @@
-    {
+{
+    "AF": [
+            { "code": "BDS", "name": "Badakhshan" },
+            { "code": "BDG", "name": "Badghis" },
+            { "code": "BGL", "name": "Baghlan" },
+            { "code": "BAL", "name": "Balkh" },
+            { "code": "BAM", "name": "Bamyan" },
+            { "code": "DAY", "name": "Daykundi" },
+            { "code": "FRA", "name": "Farah" },
+            { "code": "FYB", "name": "Faryab" },
+            { "code": "GHA", "name": "Ghazni" },
+            { "code": "GHO", "name": "Ghor" },
+            { "code": "HEL", "name": "Helmand" },
+            { "code": "HER", "name": "Herat" },
+            { "code": "JOW", "name": "Jowzjan" },
+            { "code": "KAB", "name": "Kabul" },
+            { "code": "KAN", "name": "Kandahar" },
+            { "code": "KAP", "name": "Kapisa" },
+            { "code": "KHO", "name": "Khost" },
+            { "code": "KNR", "name": "Kunar" },
+            { "code": "KUN", "name": "Kunduz" },
+            { "code": "LAG", "name": "Laghman" },
+            { "code": "LOG", "name": "Logar" },
+            { "code": "NAN", "name": "Nangarhar" },
+            { "code": "NIM", "name": "Nimroz" },
+            { "code": "NUR", "name": "Nuristan" },
+            { "code": "PAN", "name": "Panjshir" },
+            { "code": "PAR", "name": "Parwan" },
+            { "code": "PIA", "name": "Paktia" },
+            { "code": "PKA", "name": "Paktika" },
+            { "code": "SAM", "name": "Samangan" },
+            { "code": "SAR", "name": "Sar-e Pol" },
+            { "code": "TAK", "name": "Takhar" },
+            { "code": "URU", "name": "Urozgan" },
+            { "code": "WAR", "name": "Wardak" },
+            { "code": "ZAB", "name": "Zabul" }
+        ],
+    
+        "PK": [
+            { "code": "BA", "name": "Balochistan" },
+            { "code": "TA", "name": "FATA" },
+            { "code": "GB", "name": "Gilgit-Baltistan" },
+            { "code": "IS", "name": "Islamabad Capital Territory" },
+            { "code": "JK", "name": "Azad Jammu and Kashmir" },
+            { "code": "KP", "name": "Khyber Pakhtunkhwa" },
+            { "code": "PB", "name": "Punjab" },
+            { "code": "SD", "name": "Sindh" }
+        ],
+    
+        "ET": [
+            { "code": "AA", "name": "Addis Ababa" },
+            { "code": "AF", "name": "Afar" },
+            { "code": "AM", "name": "Amhara" },
+            { "code": "BE", "name": "Benishangul-Gumuz" },
+            { "code": "DD", "name": "Dire Dawa" },
+            { "code": "GA", "name": "Gambela" },
+            { "code": "HA", "name": "Harari" },
+            { "code": "OR", "name": "Oromia" },
+            { "code": "SN", "name": "Southern Nations, Nationalities, and Peoples' Region" },
+            { "code": "SO", "name": "Somali" },
+            { "code": "TI", "name": "Tigray" }
+        ],
         "US": [
             { "code": "AL", "name": "Alabama" },
             { "code": "AK", "name": "Alaska" },
@@ -1691,4 +1752,4 @@
         { "code": "W", "name": "Western" },
         { "code": "R", "name": "Rotuma" }
         ]
-    }
+}
