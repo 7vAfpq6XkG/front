@@ -1,0 +1,247 @@
+[
+    {
+        "iso": "US",
+        "flag": "🇺🇸",
+        "flagClass": "flag-sprite-unitedstates",
+        "englishName": "United States",
+        "localName": "Estados Unidos"
+    },
+    {
+        "iso": "MX",
+        "flag": "🇲🇽",
+        "flagClass": "flag-sprite-mexico",
+        "englishName": "Mexico",
+        "localName": "México"
+    },
+    {
+        "iso": "CA",
+        "flag": "🇨🇦",
+        "flagClass": "flag-sprite-canada",
+        "englishName": "Canada",
+        "localName": "Canadá"
+    },
+    {
+        "iso": "BR",
+        "flag": "🇧🇷",
+        "flagClass": "flag-sprite-brazil",
+        "englishName": "Brazil",
+        "localName": "Brasil"
+    },
+    {
+        "iso": "AR",
+        "flag": "🇦🇷",
+        "flagClass": "flag-sprite-argentina",
+        "englishName": "Argentina",
+        "localName": "Argentina"
+    },
+    {
+        "iso": "CO",
+        "flag": "🇨🇴",
+        "flagClass": "flag-sprite-colombia",
+        "englishName": "Colombia",
+        "localName": "Colombia"
+    },
+    {
+        "iso": "CL",
+        "flag": "🇨🇱",
+        "flagClass": "flag-sprite-chile",
+        "englishName": "Chile",
+        "localName": "Chile"
+    },
+    {
+        "iso": "PE",
+        "flag": "🇵🇪",
+        "flagClass": "flag-sprite-peru",
+        "englishName": "Peru",
+        "localName": "Perú"
+    },
+    {
+        "iso": "VE",
+        "flag": "🇻🇪",
+        "flagClass": "flag-sprite-venezuela",
+        "englishName": "Venezuela",
+        "localName": "Venezuela"
+    },
+    {
+        "iso": "EC",
+        "flag": "🇪🇨",
+        "flagClass": "flag-sprite-ecuador",
+        "englishName": "Ecuador",
+        "localName": "Ecuador"
+    },
+    {
+        "iso": "GT",
+        "flag": "🇬🇹",
+        "flagClass": "flag-sprite-guatemala",
+        "englishName": "Guatemala",
+        "localName": "Guatemala"
+    },
+    {
+        "iso": "BO",
+        "flag": "🇧🇴",
+        "flagClass": "flag-sprite-bolivia",
+        "englishName": "Bolivia",
+        "localName": "Bolivia"
+    },
+    {
+        "iso": "DO",
+        "flag": "🇩🇴",
+        "flagClass": "flag-sprite-dominicanrepublic",
+        "englishName": "Dominican Republic",
+        "localName": "República Dominicana"
+    },
+    {
+        "iso": "HN",
+        "flag": "🇭🇳",
+        "flagClass": "flag-sprite-honduras",
+        "englishName": "Honduras",
+        "localName": "Honduras"
+    },
+    {
+        "iso": "PY",
+        "flag": "🇵🇾",
+        "flagClass": "flag-sprite-paraguay",
+        "englishName": "Paraguay",
+        "localName": "Paraguay"
+    },
+    {
+        "iso": "SV",
+        "flag": "🇸🇻",
+        "flagClass": "flag-sprite-elsalvador",
+        "englishName": "El Salvador",
+        "localName": "El Salvador"
+    },
+    {
+        "iso": "NI",
+        "flag": "🇳🇮",
+        "flagClass": "flag-sprite-nicaragua",
+        "englishName": "Nicaragua",
+        "localName": "Nicaragua"
+    },
+    {
+        "iso": "CR",
+        "flag": "🇨🇷",
+        "flagClass": "flag-sprite-costarica",
+        "englishName": "Costa Rica",
+        "localName": "Costa Rica"
+    },
+    {
+        "iso": "PA",
+        "flag": "🇵🇦",
+        "flagClass": "flag-sprite-panama",
+        "englishName": "Panama",
+        "localName": "Panamá"
+    },
+    {
+        "iso": "UY",
+        "flag": "🇺🇾",
+        "flagClass": "flag-sprite-uruguay",
+        "englishName": "Uruguay",
+        "localName": "Uruguay"
+    },
+    {
+        "iso": "JM",
+        "flag": "🇯🇲",
+        "flagClass": "flag-sprite-jamaica",
+        "englishName": "Jamaica",
+        "localName": "Jamaica"
+    },
+    {
+        "iso": "HT",
+        "flag": "🇭🇹",
+        "flagClass": "flag-sprite-haiti",
+        "englishName": "Haiti",
+        "localName": "Haïti"
+    },
+    {
+        "iso": "BS",
+        "flag": "🇧🇸",
+        "flagClass": "flag-sprite-bahamas",
+        "englishName": "Bahamas",
+        "localName": "Bahamas"
+    },
+    {
+        "iso": "BZ",
+        "flag": "🇧🇿",
+        "flagClass": "flag-sprite-belize",
+        "englishName": "Belize",
+        "localName": "Belice"
+    },
+    {
+        "iso": "BB",
+        "flag": "🇧🇧",
+        "flagClass": "flag-sprite-barbados",
+        "englishName": "Barbados",
+        "localName": "Barbados"
+    },
+    {
+        "iso": "TT",
+        "flag": "🇹🇹",
+        "flagClass": "flag-sprite-trinidadandtobago",
+        "englishName": "Trinidad and Tobago",
+        "localName": "Trinidad y Tobago"
+    },
+    {
+        "iso": "SR",
+        "flag": "🇸🇷",
+        "flagClass": "flag-sprite-suriname",
+        "englishName": "Suriname",
+        "localName": "Surinam"
+    },
+    {
+        "iso": "GY",
+        "flag": "🇬🇾",
+        "flagClass": "flag-sprite-guyana",
+        "englishName": "Guyana",
+        "localName": "Guyana"
+    },
+    {
+        "iso": "KN",
+        "flag": "🇰🇳",
+        "flagClass": "flag-sprite-saintkittsandnevis",
+        "englishName": "Saint Kitts and Nevis",
+        "localName": "San Cristóbal y Nieves"
+    },
+    {
+        "iso": "AG",
+        "flag": "🇦🇬",
+        "flagClass": "flag-sprite-antiguaandbarbuda",
+        "englishName": "Antigua and Barbuda",
+        "localName": "Antigua y Barbuda"
+    },
+    {
+        "iso": "LC",
+        "flag": "🇱🇨",
+        "flagClass": "flag-sprite-saintlucia",
+        "englishName": "Saint Lucia",
+        "localName": "Santa Lucía"
+    },
+    {
+        "iso": "VC",
+        "flag": "🇻🇨",
+        "flagClass": "flag-sprite-saintvincentandthegrenadines",
+        "englishName": "Saint Vincent and the Grenadines",
+        "localName": "San Vicente y las Granadinas"
+    },
+    {
+        "iso": "GD",
+        "flag": "🇬🇩",
+        "flagClass": "flag-sprite-grenada",
+        "englishName": "Grenada",
+        "localName": "Granada"
+    },
+    {
+        "iso": "DM",
+        "flag": "🇩🇲",
+        "flagClass": "flag-sprite-dominica",
+        "englishName": "Dominica",
+        "localName": "Dominica"
+    },
+    {
+        "iso": "GL",
+        "flag": "🇬🇱",
+        "flagClass": "flag-sprite-greenland",
+        "englishName": "Greenland",
+        "localName": "Groenlandia"
+    }
+]
